@@ -393,7 +393,10 @@ class Pcap(object):
                 elif answer.type == dpkt.dns.DNS_TXT:
                     ans["type"] = "TXT"
                     ans["data"] = " ".join(answer.text)
-
+                else:
+                # Some answer can not be parsed correctly
+                    ans["type"] = "None"
+                    ans["data"] = "None"
                 # TODO: add srv handling
                 query["answers"].append(ans)
 
